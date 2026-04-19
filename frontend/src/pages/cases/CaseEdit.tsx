@@ -6,7 +6,7 @@ export default function CaseEdit() {
   const { id } = useParams();
   const c = findCaso(id) || findCaso("CA-2026-0142");
 
-  const L = ({ label, hint }) => (
+  const L = ({ label, hint }: any) => (
     <div className="flex items-center gap-2 mb-2">
       <label className="text-[12px] uppercase tracking-[0.14em] text-[hsl(var(--muted-foreground))]">{label}</label>
       {hint && <span className="text-[10px] text-gold-600 font-mono">•{hint}</span>}

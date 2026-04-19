@@ -108,7 +108,7 @@ export default function ClientCaseDetail() {
   );
 }
 
-const M = ({ icon:Icon, label, value, accent, mono }) => (
+const M = ({ icon:Icon, label, value, accent, mono }: any) => (
   <div className="flex items-start gap-2.5">
     <Icon size={15} className={`mt-0.5 ${accent?"text-gold-600":"text-[hsl(var(--muted-foreground))]"}`}/>
     <div>

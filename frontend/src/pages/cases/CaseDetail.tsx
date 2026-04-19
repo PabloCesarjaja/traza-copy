@@ -131,7 +131,7 @@ export default function CaseDetail() {
   );
 }
 
-const Meta = ({ icon:Icon, label, value, accent }) => (
+const Meta = ({ icon:Icon, label, value, accent }: any) => (
   <div className="flex items-start gap-3">
     <Icon size={16} className={`mt-0.5 ${accent ? "text-gold-600" : "text-[hsl(var(--muted-foreground))]"}`}/>
     <div>

@@ -19,7 +19,7 @@ export default function AuditLog() {
   const logs = allAuditoria.filter(a=>a.casoId===c.id);
 
   // group by date
-  const grouped = logs.reduce((acc,l)=>{
+  const grouped = logs.reduce<Record<string, typeof logs>>((acc,l)=>{
     const day = l.fecha.split(" ")[0];
     (acc[day] = acc[day] || []).push(l);
     return acc;
