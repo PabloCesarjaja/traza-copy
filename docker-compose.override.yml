@@ -1,0 +1,74 @@
+# docker-compose.override.yml
+# Sobreescrituras para entorno de desarrollo local.
+# Se aplica automáticamente junto con docker-compose.yml.
+
+services:
+
+  frontend:
+    build:
+      target: desarrollo
+    volumes:
+      - ./apps/frontend/src:/app/src
+    environment:
+      - NODE_ENV=development
+
+  api-gateway:
+    volumes:
+      - ./apps/api-gateway/src:/app/src
+    environment:
+      - NODE_ENV=development
+    command: ["npm", "run", "dev"]
+
+  auth-service:
+    volumes:
+      - ./apps/services/auth-service/src:/app/src
+    environment:
+      - NODE_ENV=development
+    command: ["npm", "run", "dev"]
+
+  case-service:
+    volumes:
+      - ./apps/services/case-service/src:/app/src
+    environment:
+      - NODE_ENV=development
+    command: ["npm", "run", "dev"]
+
+  task-service:
+    volumes:
+      - ./apps/services/task-service/src:/app/src
+    environment:
+      - NODE_ENV=development
+    command: ["npm", "run", "dev"]
+
+  document-service:
+    volumes:
+      - ./apps/services/document-service/src:/app/src
+    environment:
+      - NODE_ENV=development
+    command: ["npm", "run", "dev"]
+
+  websocket-server:
+    volumes:
+      - ./apps/websocket-server/src:/app/src
+    environment:
+      - NODE_ENV=development
+    command: ["npm", "run", "dev"]
+
+  audit-service:
+    volumes:
+      - ./apps/services/audit-service/src:/app/src
+    environment:
+      - NODE_ENV=development
+    command: ["npm", "run", "dev"]
+
+  ocr-service:
+    volumes:
+      - ./apps/workers/ocr-service/app:/app/app
+    environment:
+      - RELOAD=true
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+  # Redis con interfaz visual en desarrollo
+  redis:
+    ports:
+      - "6379:6379"
